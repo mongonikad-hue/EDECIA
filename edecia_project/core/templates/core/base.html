@@ -1,0 +1,38 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}EDECIA{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1 class="logo">EDECIA</h1>
+        <nav>
+            <a href="{% url 'core:index' %}">Home</a>
+            <a href="{% url 'core:about' %}">About</a>
+            <a href="{% url 'core:blog' %}">Blog</a>
+            <a href="{% url 'core:service' %}">Services</a>
+            <a href="{% url 'core:contact' %}">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <p>&copy; EDECIA - All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="{% static 'core/js/main.js' %}"></script>
+</body>
+</html>

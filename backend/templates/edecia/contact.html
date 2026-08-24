@@ -1,0 +1,174 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EDECIA - Contact</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
+</head>
+<body>
+ <header>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid px-0">
+        <!-- Brand -->
+        <a href="{% url 'index' %}" class="navbar-brand-custom">
+          <img src="{% static 'images/picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+          <span class="brand-text">EDECIA</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Basculer la navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'index' %}">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'service' %}">Services</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'about' %}">À propos</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'blog' %}">Blog</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom active" href="{% url 'contact' %}" aria-current="page">Contact</a></li>
+          </ul>
+          <button class="theme-toggle-btn ms-2" data-theme-toggle aria-label="Changer le thème">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- ========== EN‑TÊTE ========== -->
+  <!-- ====== HERO CONTACT ====== -->
+  <section class="blog-hero">
+    <div class="container">
+      <span class="hero-badge">Parlons de votre projet</span>
+      <h1>Concrétisez vos <span style="color:#58b3ff;">ambitions</span> avec nous</h1>
+      <p>Vous avez une idée, un projet, un besoin ? Remplissez le formulaire ci-dessous. Nous vous répondons sous 24h.</p>
+    </div>
+  </section>
+
+  <main>
+    <section class="py-5 pb-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-7 col-xl-6">
+
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags|default:'info' }} alert-dismissible fade show mb-4" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
+
+            <form class="contact-form-clean" action="{% url 'contact' %}" method="POST">
+              {% csrf_token %}
+
+              <div class="cfc-field">
+                <input type="text" name="name" placeholder="Nom complet *" required />
+              </div>
+
+              <div class="cfc-field">
+                <input type="email" name="email" placeholder="E-mail *" required />
+              </div>
+
+              <div class="cfc-field">
+                <input type="tel" name="phone" placeholder="Téléphone" />
+              </div>
+
+              <div class="cfc-field">
+                <select name="subject" required>
+                  <option value="" disabled selected>Sujet...</option>
+                  <option value="formation">Inscription à une Formation (5$)</option>
+                  <option value="service">Demande de Service Créatif / Tech</option>
+                  <option value="produit">Achat de Produit Digital</option>
+                  <option value="autre">Autre</option>
+                </select>
+              </div>
+
+              <div class="cfc-field">
+                <textarea name="message" placeholder="Message *" rows="7" required></textarea>
+              </div>
+
+              <button type="submit" class="cfc-submit">
+                Envoyer le message !
+              </button>
+
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+ 
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-content">
+
+        <div class="footer-section footer-about">
+          <div class="footer-logo">
+             <a href="{% url 'index' %}" class="navbar-brand-custom">
+             <img src="{% static 'images/Picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+             </a>
+            <span class="brand-name">EDECIA</span>
+          </div>
+          <p class="footer-description">EDECIA est un écosystème digital 100% conçu pour apporter des solutions concrètes aux besoins des communautés, offrir des services technologiques adaptés et propulser les talents d'avenir.</p>
+          <div class="social-links">
+            <a href="https://www.youtube.com/edecia" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/edecia" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/company/edecia" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/edecia" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.whatsapp.com/company/edecia" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'service' %}">Accompagnement Technique</a></li>
+            <li><a href="{% url 'service' %}">Conseil aux Entreprises</a></li>
+            <li><a href="{% url 'service' %}">Développement Sur Mesure</a></li>
+            <li><a href="{% url 'service' %}">Solutions Digitales</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Entreprise</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'index' %}#projets">Nos Projets</a></li>
+            <li><a href="{% url 'about' %}">À Propos</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 EDECIA. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/256702465646" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Nous contacter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+<span class="wa-tooltip">Discutons sur WhatsApp</span>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

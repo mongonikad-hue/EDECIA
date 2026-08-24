@@ -1,0 +1,99 @@
+# EDECIA - À propos
+
+[EDECIA](http://127.0.0.1:8000/)
+- [Accueil](http://127.0.0.1:8000/)
+- [Services](http://127.0.0.1:8000/service/)
+- [À propos](http://127.0.0.1:8000/about/)
+- [Blog](http://127.0.0.1:8000/blog/)
+- [Contact](http://127.0.0.1:8000/contact/)
+[Accueil](http://127.0.0.1:8000/)
+[Services](http://127.0.0.1:8000/service/)
+[À propos](http://127.0.0.1:8000/about/)
+[Blog](http://127.0.0.1:8000/blog/)
+[Contact](http://127.0.0.1:8000/contact/)
+
+# À propos d'EDECIA
+Un écosystème digital né en Afrique, construit par des passionnés pour transformer les compétences numériques en opportunités concrètes et durables.
+
+## Notre mission
+Trois engagements fondamentaux qui guident chacune de nos actions au quotidien.
+
+### Solutions pour les communautés
+Apporter des réponses concrètes aux besoins des populations grâce aux technologies et outils numériques accessibles à tous.
+
+### Services digitaux professionnels
+Offrir des services de qualité : graphisme, montage vidéo, création de comptes monétisés et assistance technique clé en main.
+
+### Former les talents de demain
+Accompagner les jeunes dans le business, le marketing digital, l'IA et l'entrepreneuriat pour transformer leurs compétences en revenus.
+
+## Nos valeurs
+Les principes qui nous définissent et guident nos décisions chaque jour.
+
+#### Innovation
+Repousser les limites du possible grâce aux technologies émergentes.
+
+#### Accessibilité
+Rendre le digital accessible à tous, partout, sans barrière de coût.
+
+#### Impact
+Chaque action produit un changement mesurable dans les communautés.
+
+#### Excellence
+Des standards professionnels élevés à chaque formation et livraison.
+
+## L'équipe EDECIA
+Découvrez les talents et experts technologiques qui propulsent l’innovation au cœur de notre écosystème digital.
+
+### David Mongonika
+
+#### Président
+Visionnaire et passionné par l'innovation numérique, il dirige la stratégie globale d'EDECIA.
+
+### Nikael Peter Kabeya
+
+#### Chief Operating Officer
+Architecte opérationnel, il optimise les flux de travail complexes et structure la livraison de nos infrastructures.
+
+### Jephté Litanda
+
+#### Manager Général
+Gestionnaire tactique des équipes au quotidien, il veille à la synergie opérationnelle et à l'expérience de réussite client.
+
+### Sarah Kone
+
+#### Spécialiste IA
+Elle conçoit des prompts avancés et automatise vos processus métiers grâce aux outils d'IA générative.
+
+### Idriss Diallo
+
+#### Pôle Design Pro
+Architecte graphique dédié à la création d'identités visuelles impactantes et de chartes premiums.
+
+### Marc Tumba
+
+#### Pôle Développement
+Ingénieur Full-Stack assurant la robustesse et l'évolution de nos architectures logicielles.
+EDECIA est un écosystème digital 100% conçu pour apporter des solutions concrètes aux besoins des communautés, offrir des services technologiques adaptés et propulser les talents d'avenir.
+
+### Services
+- [Accompagnement Technique](http://127.0.0.1:8000/service/)
+- [Conseil aux Entreprises](http://127.0.0.1:8000/service/)
+- [Développement Sur Mesure](http://127.0.0.1:8000/service/)
+- [Solutions Digitales](http://127.0.0.1:8000/service/)
+[Accompagnement Technique](http://127.0.0.1:8000/service/)
+[Conseil aux Entreprises](http://127.0.0.1:8000/service/)
+[Développement Sur Mesure](http://127.0.0.1:8000/service/)
+[Solutions Digitales](http://127.0.0.1:8000/service/)
+
+### Entreprise
+- [Nos Projets](http://127.0.0.1:8000/#projets)
+- [À Propos](http://127.0.0.1:8000/about/)
+- [Blog](http://127.0.0.1:8000/blog/)
+- [Contact](http://127.0.0.1:8000/contact/)
+[Nos Projets](http://127.0.0.1:8000/#projets)
+[À Propos](http://127.0.0.1:8000/about/)
+[Blog](http://127.0.0.1:8000/blog/)
+[Contact](http://127.0.0.1:8000/contact/)
+© 2026 EDECIA. Tous droits réservés.
+[Discutons sur WhatsApp](https://wa.me/256702465646)

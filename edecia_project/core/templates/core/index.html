@@ -1,0 +1,305 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}EDECIA — Enterprise Technology, AI & Cloud Infrastructure{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-bg-glow"></div>
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>Next-Gen Enterprise Engineering</span>
+            </div>
+            <h1 class="hero-title">Architecting the Next Era of <span class="text-gradient">Digital Intelligence</span>
+            </h1>
+            <p class="hero-subtitle">EDECIA empowers forward-thinking enterprises with resilient multi-cloud
+                engineering, generative AI automation, and zero-trust cybersecurity solutions.</p>
+            <div class="hero-ctas">
+                <a href="{% url 'core:service' %}" class="btn btn-primary btn-lg">
+                    <span>Explore Solutions</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </a>
+                <a href="{% url 'core:contact' %}" class="btn btn-outline btn-lg">
+                    <span>Schedule Consultation</span>
+                </a>
+            </div>
+            <div class="hero-trust">
+                <span>Trusted by technology leaders across finance, healthcare, and SaaS</span>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <div class="visual-card glass-panel">
+                <div class="card-header">
+                    <div class="window-controls">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                    </div>
+                    <span class="window-title">edecia-core-status.v2.4</span>
+                </div>
+                <div class="card-body">
+                    <div class="status-metric">
+                        <div class="metric-info">
+                            <span class="metric-label">System Health</span>
+                            <span class="metric-val text-success">Optimal — 99.99%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill fill-99"></div>
+                        </div>
+                    </div>
+
+                    <div class="status-metric">
+                        <div class="metric-info">
+                            <span class="metric-label">AI Inference Engine</span>
+                            <span class="metric-val text-primary">Active (1.2ms latency)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill fill-95"></div>
+                        </div>
+                    </div>
+
+                    <div class="status-metric">
+                        <div class="metric-info">
+                            <span class="metric-label">CloudShield Security</span>
+                            <span class="metric-val text-accent">Protected (0 Threats)</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill fill-100"></div>
+                        </div>
+                    </div>
+
+                    <div class="code-snippet">
+                        <code><span class="keyword">import</span> edecia_ai <span class="keyword">as</span> ai</code>
+                        <code>stream = ai.Connect(cluster=<span class="string">"global-mesh"</span>)</code>
+                        <code>stream.deploy_zero_trust(mode=<span class="string">"strict"</span>)</code>
+                        <code><span class="comment"># Output: 0 vulnerabilities, SLA guaranteed</span></code>
+                    </div>
+                </div>
+            </div>
+
+            <div class="floating-badge badge-1">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                </svg>
+                <span>Real-Time Telemetry</span>
+            </div>
+
+            <div class="floating-badge badge-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span>SOC2 Compliant</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Counter Bar -->
+<section class="stats-section">
+    <div class="container stats-grid">
+        <div class="stat-card">
+            <h3 class="stat-number" data-target="500">500+</h3>
+            <p class="stat-label">Enterprise Projects</p>
+        </div>
+        <div class="stat-card">
+            <h3 class="stat-number">99.8%</h3>
+            <p class="stat-label">Client Satisfaction</p>
+        </div>
+        <div class="stat-card">
+            <h3 class="stat-number">120+</h3>
+            <p class="stat-label">Global Clients</p>
+        </div>
+        <div class="stat-card">
+            <h3 class="stat-number">24/7</h3>
+            <p class="stat-label">Expert Support SLA</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Services -->
+<section class="section services-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="sub-heading">Capabilities</span>
+            <h2 class="section-title">Engineered for Technical Excellence</h2>
+            <p class="section-desc">Comprehensive technology services designed to scale your operations securely and
+                seamlessly.</p>
+        </div>
+
+        <div class="grid grid-4 services-grid">
+            {% for s in featured_services %}
+            <div class="card service-card">
+                <div class="service-icon-box">
+                    {% if s.icon == 'cloud' %}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                    </svg>
+                    {% elif s.icon == 'cpu' %}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                        <rect x="9" y="9" width="6" height="6"></rect>
+                        <line x1="9" y1="1" x2="9" y2="4"></line>
+                        <line x1="15" y1="1" x2="15" y2="4"></line>
+                        <line x1="9" y1="20" x2="9" y2="23"></line>
+                        <line x1="15" y1="20" x2="15" y2="23"></line>
+                        <line x1="20" y1="9" x2="23" y2="9"></line>
+                        <line x1="20" y1="15" x2="23" y2="15"></line>
+                        <line x1="1" y1="9" x2="4" y2="9"></line>
+                        <line x1="1" y1="15" x2="4" y2="15"></line>
+                    </svg>
+                    {% elif s.icon == 'shield' %}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    {% elif s.icon == 'code' %}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                    {% else %}
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    {% endif %}
+                </div>
+                <h3 class="service-title">{{ s.name }}</h3>
+                <p class="service-desc">{{ s.summary }}</p>
+                <a href="{% url 'core:service' %}" class="link-arrow">Learn More &rarr;</a>
+            </div>
+            {% empty %}
+            <p>No services currently configured.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Featured Product Suite -->
+<section class="section products-section bg-surface">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="sub-heading">Product Suite</span>
+            <h2 class="section-title">Enterprise Software Platforms</h2>
+            <p class="section-desc">Turnkey software modules engineered for high reliability, security, and developer
+                productivity.</p>
+        </div>
+
+        <div class="grid grid-2 products-grid">
+            {% for p in featured_products %}
+            <div class="card product-card">
+                <div class="product-top">
+                    {% if p.badge %}
+                    <span class="chip chip-accent">{{ p.badge }}</span>
+                    {% else %}
+                    <span class="chip chip-primary">{{ p.category }}</span>
+                    {% endif %}
+                    <div class="product-price">
+                        <span class="currency">$</span><span class="amount">{{ p.price|floatformat:0 }}</span>
+                        {% if p.original_price %}
+                        <span class="original-price">${{ p.original_price|floatformat:0 }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <h3 class="product-title">{{ p.name }}</h3>
+                <p class="product-desc">{{ p.short_description|default:p.description|truncatechars:120 }}</p>
+                <div class="product-actions">
+                    <a href="{% url 'core:product_detail' p.slug %}" class="btn btn-outline btn-sm">View Details</a>
+                    <a href="{% url 'core:contact' %}" class="btn btn-primary btn-sm">Request Demo</a>
+                </div>
+            </div>
+            {% empty %}
+            <p>No featured products available.</p>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-4">
+            <a href="{% url 'core:products' %}" class="btn btn-outline btn-lg">Browse Complete Catalog &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section testimonials-section">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="sub-heading">Testimonials</span>
+            <h2 class="section-title">Trusted by Engineering Leaders</h2>
+            <p class="section-desc">See how EDECIA helps industry pioneers achieve unprecedented scale and security.</p>
+        </div>
+
+        <div class="grid grid-3 testimonials-grid">
+            {% for t in testimonials %}
+            <div class="card testimonial-card">
+                <div class="rating-stars">
+                    {% for i in "12345" %}
+                    <svg width="16" height="16" fill="#f59e0b" viewBox="0 0 24 24">
+                        <polygon
+                            points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                        </polygon>
+                    </svg>
+                    {% endfor %}
+                </div>
+                <p class="quote-text">"{{ t.comment }}"</p>
+                <div class="client-info">
+                    <div class="avatar-placeholder">
+                        <span>{{ t.client_name|slice:":1" }}</span>
+                    </div>
+                    <div>
+                        <h4 class="client-name">{{ t.client_name }}</h4>
+                        <span class="client-role">{{ t.client_role }}, {{ t.company }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Recent Blog Posts -->
+<section class="section blog-section bg-surface">
+    <div class="container">
+        <div class="section-header text-center">
+            <span class="sub-heading">Insights</span>
+            <h2 class="section-title">Latest Technical Thinking</h2>
+            <p class="section-desc">Engineering articles, architectural breakdowns, and tech industry analysis.</p>
+        </div>
+
+        <div class="grid grid-3 blog-grid">
+            {% for post in recent_posts %}
+            <div class="card blog-card">
+                <div class="blog-meta">
+                    <span class="chip chip-primary">{{ post.category }}</span>
+                    <span class="blog-date">{{ post.created_at|date:"M d, Y" }}</span>
+                </div>
+                <h3 class="blog-card-title">
+                    <a href="{% url 'core:blog_detail' post.slug %}">{{ post.title }}</a>
+                </h3>
+                <p class="blog-card-excerpt">{{ post.excerpt|truncatechars:130 }}</p>
+                <div class="blog-footer">
+                    <span class="blog-author">By {{ post.author }}</span>
+                    <a href="{% url 'core:blog_detail' post.slug %}" class="read-more">Read &rarr;</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Call To Action Section -->
+<section class="section cta-banner">
+    <div class="container text-center cta-inner">
+        <h2 class="cta-title">Ready to Elevate Your Digital Architecture?</h2>
+        <p class="cta-desc">Speak directly with our senior technology architects to discuss your cloud, AI, or
+            cybersecurity goals.</p>
+        <a href="{% url 'core:contact' %}" class="btn btn-primary btn-lg">Schedule Your Free Architecture Review</a>
+    </div>
+</section>
+{% endblock %}

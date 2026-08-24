@@ -1,0 +1,222 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EDECIA - Services</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid px-0">
+        <a href="{% url 'index' %}" class="navbar-brand-custom">
+          <img src="{% static 'images/picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+          <span class="brand-text">EDECIA</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Basculer la navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'index' %}">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom active" href="{% url 'service' %}" aria-current="page">Services</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'about' %}">À propos</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'blog' %}">Blog</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <button class="theme-toggle-btn ms-2" data-theme-toggle aria-label="Changer le thème">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+      <div class="container">
+        <span class="hero-badge">Formations · Services · Produits Digitaux</span>
+        <h1>Nos <span style="color:#58b3ff;">solutions</span></h1>
+        <p>Un catalogue complet pensé pour vous transformer  accessible dès 3$. Choisissez votre niveau, commandez en 1 clic.</p>
+      </div>
+    </section>
+
+    <!-- CATALOG -->
+    <section class="svc-catalog pb-5">
+      <div class="container">
+
+        <!-- Filter bar (visual only) -->
+        <ul class="product-filter" role="list">
+          <li class="filter-item"><button class="filter-btn {% if selected_type == 'all' %}is-active{% endif %}" type="button" data-filter="all">Tous</button></li>
+          <li class="filter-item"><button class="filter-btn {% if selected_type == 'formation' %}is-active{% endif %}" type="button" data-filter="formation">Formation</button></li>
+          <li class="filter-item"><button class="filter-btn {% if selected_type == 'produit' %}is-active{% endif %}" type="button" data-filter="produit">Produit digital</button></li>
+          <li class="filter-item"><button class="filter-btn {% if selected_type == 'service' %}is-active{% endif %}" type="button" data-filter="service">Service</button></li>
+        </ul>
+
+        
+        <ul class="product-grid" role="list">
+          {% for service in services %}
+          <li data-category="{{ service.service_type }}">
+            <article class="article-card">
+              {% if service.image %}
+                <img src="{{ service.image.url }}" alt="{{ service.title }}" class="article-thumb" style="object-fit: cover;">
+              {% else %}
+                <div class="article-thumb" style="background: linear-gradient(135deg, #04111f 0%, #0a2a4a 100%);">
+                  {% if service.service_type == 'formation' %}
+                    <i class="fa-solid fa-layer-group"></i>
+                  {% elif service.service_type == 'produit' %}
+                    <i class="fa-solid fa-box"></i>
+                  {% else %}
+                    <i class="fa-solid fa-gears"></i>
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="article-body">
+                <span class="article-badge">
+                  {% if service.service_type == 'formation' %}
+                    <i class="fa-solid fa-layer-group"></i> Formation
+                  {% elif service.service_type == 'produit' %}
+                    <i class="fa-solid fa-box"></i> Produit digital
+                  {% else %}
+                    <i class="fa-solid fa-gears"></i> Service
+                  {% endif %}
+                </span>
+                <h3 class="article-title">{{ service.title }}</h3>
+                <p class="article-excerpt">{{ service.description }}</p>
+                <div class="pricing-tiers my-3">
+                  <div class="tier tier--standard">
+                    <span class="tier-label">Standard</span>
+                    <div class="tier-price">{% if service.price_basic %}{{ service.price_basic|floatformat:0 }} ${% else %}Sur demande{% endif %}</div>
+                  </div>
+                  <div class="tier">
+                    <span class="tier-label">Premium</span>
+                    <div class="tier-price">{% if service.price_premium %}{{ service.price_premium|floatformat:0 }} ${% else %}Sur demande{% endif %}</div>
+                  </div>
+                </div>
+                <div class="article-meta mt-auto pt-2 border-top border-secondary border-opacity-25">
+                  <a href="{% url 'contact' %}" class="article-read-link"><i class="fa-regular fa-eye me-1"></i>Détails</a>
+                  <a href="https://wa.me/256702465646" target="_blank" rel="noopener" class="article-read-link ms-auto">Je réserve <i class="fa-solid fa-arrow-up-right-from-square fa-sm ms-1"></i></a>
+                </div>
+              </div>
+            </article>
+          </li>
+          {% empty %}
+          <li style="grid-column: 1 / -1;">
+            <div class="alert alert-secondary text-center">Aucun service enregistré pour l'instant. Ajoutez-en via l'admin.</div>
+          </li>
+          {% endfor %}
+        </ul>
+
+    </section>
+
+
+    </section>
+
+  </main>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/256702465646" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Nous contacter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-tooltip">Discutons sur WhatsApp</span>
+  </a>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-content">
+        <div class="footer-section footer-about">
+          <div class="footer-logo">
+            <a href="{% url 'index' %}" class="navbar-brand-custom">
+              <img src="{% static 'images/Picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+            </a>
+            <span class="brand-name">EDECIA</span>
+          </div>
+          <p class="footer-description">EDECIA est un écosystème digital 100% conçu pour apporter des solutions concrètes aux besoins des communautés, offrir des services technologiques adaptés et propulser les talents d'avenir.</p>
+          <div class="social-links">
+            <a href="https://www.youtube.com/edecia" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/edecia" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/company/edecia" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/edecia" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.whatsapp.com/company/edecia" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'service' %}">Formations en direct</a></li>
+            <li><a href="{% url 'service' %}">Produits Digitaux</a></li>
+            <li><a href="{% url 'service' %}">Graphisme & Vidéo</a></li>
+            <li><a href="{% url 'service' %}">Outils Pro & Monétisation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3 class="footer-title">Entreprise</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'index' %}#projets">Nos Projets</a></li>
+            <li><a href="{% url 'about' %}">À Propos</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 EDECIA. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+  <script>
+    // Client-side filter: toggle product visibility and update URL param
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.filter-btn');
+      const items = document.querySelectorAll('.product-grid li');
+
+      function applyFilter(filter) {
+        items.forEach(li => {
+          const cat = li.getAttribute('data-category');
+          if (filter === 'all' || cat === filter) {
+            li.classList.remove('hidden');
+          } else {
+            li.classList.add('hidden');
+          }
+        });
+      }
+
+      function setActiveButton(filter) {
+        buttons.forEach(btn => {
+          btn.classList.toggle('is-active', btn.dataset.filter === filter);
+        });
+      }
+
+      buttons.forEach(btn => {
+        btn.addEventListener('click', function (e) {
+          const filter = this.dataset.filter;
+          setActiveButton(filter);
+          applyFilter(filter);
+          const url = new URL(window.location);
+          if (filter === 'all') url.searchParams.delete('type'); else url.searchParams.set('type', filter);
+          window.history.replaceState({}, '', url);
+        });
+      });
+
+      // Initialize from current URL or server-selected_type
+      const params = new URLSearchParams(window.location.search);
+      const urlType = params.get('type');
+      const initType = urlType || '{{ selected_type|default:"all" }}';
+      setActiveButton(initType);
+      applyFilter(initType);
+    });
+  </script>
+</body>
+</html>

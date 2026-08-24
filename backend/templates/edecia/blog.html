@@ -1,0 +1,231 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EDECIA - Blog</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid px-0">
+
+        <a href="{% url 'index' %}" class="navbar-brand-custom">
+          <img src="{% static 'images/picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+          <span class="brand-text">EDECIA</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+          aria-controls="mainNav" aria-expanded="false" aria-label="Basculer la navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'index' %}">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'service' %}">Services</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'about' %}">À propos</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom active" href="{% url 'blog' %}"
+                aria-current="page">Blog</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <button class="theme-toggle-btn ms-2" data-theme-toggle aria-label="Changer le thème">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ====== HERO BLOG ====== -->
+    <section class="blog-hero">
+      <div class="container">
+        <span class="hero-badge">Ressources & Actualités</span>
+        <h1>Le Blog <span style="color:#58b3ff;">EDECIA</span></h1>
+        <p>Conseils pratiques, études de cas et tendances digitales pour booster votre business en Afrique et ailleurs.
+        </p>
+      </div>
+    </section>
+
+    <!-- ====== GRILLE D’ARTICLES ====== -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4">
+
+          {% if posts %}
+            {% for post in posts %}
+            <div class="col-lg-4 col-md-6">
+              <article class="article-card">
+                {% if post.image %}
+                  <img src="{{ post.image.url }}" alt="{{ post.title }}" class="article-thumb" style="object-fit: cover;">
+                {% else %}
+                  <div class="article-thumb" style="background: linear-gradient(135deg, #04111f 0%, #0a2a4a 100%);">
+                    <i class="fa-solid fa-newspaper"></i>
+                  </div>
+                {% endif %}
+                <div class="article-body">
+                  <span class="article-badge"><i class="fa-solid fa-newspaper"></i> Blog</span>
+                  <h2 class="article-title">{{ post.title }}</h2>
+                  <p class="article-excerpt">{{ post.content|truncatewords:25 }}</p>
+                  <div class="article-meta">
+                    <span class="article-date"><i class="fa-regular fa-calendar fa-sm me-1"></i>{{ post.created_at|date:"M Y" }}</span>
+                    <a href="{% url 'contact' %}" class="article-read-link">Lire <i class="fa-solid fa-arrow-right fa-sm"></i></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            {% endfor %}
+          {% else %}
+          <!-- Article 1 — Transformation digitale -->
+          <div class="col-lg-4 col-md-6">
+            <article class="article-card">
+              <div class="article-thumb" style="background: linear-gradient(135deg, #04111f 0%, #0a2a4a 100%);">
+                <i class="fa-solid fa-globe"></i>
+              </div>
+              <div class="article-body">
+                <span class="article-badge"><i class="fa-solid fa-briefcase"></i> Business</span>
+                <h2 class="article-title">Transformation digitale en RDC : accélérer sa croissance</h2>
+                <p class="article-excerpt">Comment les entreprises congolaises utilisent les outils numériques pour atteindre de nouveaux marchés et multiplier leurs revenus.</p>
+                <div class="article-meta">
+                  <span class="article-date"><i class="fa-regular fa-calendar fa-sm me-1"></i>Janvier 2026</span>
+                  <a href="{% url 'contact' %}" class="article-read-link">Lire <i class="fa-solid fa-arrow-right fa-sm"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Article 2 — Design UX -->
+          <div class="col-lg-4 col-md-6">
+            <article class="article-card">
+              <div class="article-thumb" style="background: linear-gradient(135deg, #120a2a 0%, #2a1050 100%);">
+                <i class="fa-solid fa-pen-ruler"></i>
+              </div>
+              <div class="article-body">
+                <span class="article-badge"><i class="fa-solid fa-palette"></i> Design</span>
+                <h2 class="article-title">Design centré utilisateur : les 5 principes essentiels</h2>
+                <p class="article-excerpt">Une expérience digitale réussie commence par comprendre vos utilisateurs. Les règles qui font la différence entre un design oublié et un design qui convertit.</p>
+                <div class="article-meta">
+                  <span class="article-date"><i class="fa-regular fa-calendar fa-sm me-1"></i>Février 2026</span>
+                  <a href="{% url 'contact' %}" class="article-read-link">Lire <i class="fa-solid fa-arrow-right fa-sm"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Article 3 — IA -->
+          <div class="col-lg-4 col-md-6">
+            <article class="article-card">
+              <div class="article-thumb" style="background: linear-gradient(135deg, #030f1a 0%, #053d5e 100%);">
+                <i class="fa-solid fa-robot"></i>
+              </div>
+              <div class="article-body">
+                <span class="article-badge"><i class="fa-solid fa-microchip"></i> Intelligence Artificielle</span>
+                <h2 class="article-title">IA générative : comment l’utiliser concrètement pour votre business</h2>
+                <p class="article-excerpt">ChatGPT, Midjourney… ces outils ne sont plus réservés aux techniciens. Voici comment les intégrer dans votre quotidien professionnel dès maintenant.</p>
+                <div class="article-meta">
+                  <span class="article-date"><i class="fa-regular fa-calendar fa-sm me-1"></i>Mars 2026</span>
+                  <a href="{% url 'contact' %}" class="article-read-link">Lire <i class="fa-solid fa-arrow-right fa-sm"></i></a>
+                </div>
+              </div>
+            </article>
+          </div>
+          {% endif %}
+
+        </div><!-- /row -->
+
+        <!-- ====== CTA ====== -->
+        <div class="blog-cta">
+          <h3>Un sujet que vous aimeriez voir traité ?</h3>
+          <p>Proposez vos idées d’articles ou posez vos questions directement à l’équipe EDECIA.</p>
+          <a class="btn btn-primary btn-hero" href="{% url 'contact' %}">Nous écrire</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-content">
+
+        <div class="footer-section footer-about">
+          <div class="footer-logo">
+            <a href="{% url 'index' %}" class="navbar-brand-custom">
+              <img src="{% static 'images/Picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+            </a>
+            <span class="brand-name">EDECIA</span>
+          </div>
+          <p class="footer-description">EDECIA est un écosystème digital 100% conçu pour apporter des solutions
+            concrètes aux besoins des communautés, offrir des services technologiques adaptés et propulser les talents
+            d'avenir.</p>
+          <div class="social-links">
+            <a href="https://www.youtube.com/edecia" target="_blank" rel="noopener" aria-label="YouTube"><i
+                class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/edecia" target="_blank" rel="noopener" aria-label="TikTok"><i
+                class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/company/edecia" target="_blank" rel="noopener" aria-label="Facebook"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/edecia" target="_blank" rel="noopener" aria-label="Instagram"><i
+                class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.whatsapp.com/company/edecia" target="_blank" rel="noopener" aria-label="WhatsApp"><i
+                class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'service' %}">Accompagnement Technique</a></li>
+            <li><a href="{% url 'service' %}">Conseil aux Entreprises</a></li>
+            <li><a href="{% url 'service' %}">Développement Sur Mesure</a></li>
+            <li><a href="{% url 'service' %}">Solutions Digitales</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Entreprise</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'index' %}#projets">Nos Projets</a></li>
+            <li><a href="{% url 'about' %}">À Propos</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 EDECIA. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/256702465646" target="_blank" rel="noopener" class="whatsapp-float"
+    aria-label="Nous contacter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+    <span class="wa-tooltip">Discutons sur WhatsApp</span>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+    crossorigin="anonymous"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

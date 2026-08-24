@@ -1,0 +1,274 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>EDECIA - À propos</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}?v=1.2">
+</head>
+<body>
+   <header>
+    <!-- Navbar Bootstrap -->
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <div class="container-fluid px-0">
+        <!-- Brand -->
+        <a href="{% url 'index' %}" class="navbar-brand-custom">
+          <img src="{% static 'images/picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+          <span class="brand-text">EDECIA</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                aria-controls="mainNav" aria-expanded="false" aria-label="Basculer la navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'index' %}">Accueil</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'service' %}">Services</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom active" href="{% url 'about' %}" aria-current="page">À propos</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'blog' %}">Blog</a></li>
+            <li class="nav-item"><a class="nav-link nav-link-custom" href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+          <button class="theme-toggle-btn ms-2" data-theme-toggle aria-label="Changer le thème">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ====== HERO À PROPOS ====== -->
+    <section class="about-hero">
+      <div class="container">
+        <span class="hero-badge">Notre histoire & notre équipe</span>
+        <h1>À propos d'<span style="color:#58b3ff;">EDECIA</span></h1>
+        <p>Un écosystème digital né en Afrique, construit par des passionnés pour transformer les compétences numériques en opportunités concrètes et durables.</p>
+      </div>
+    </section>
+
+    <!-- ====== ABOUT API CONTENT (injected) ====== -->
+    <section class="about-api-section">
+      <div class="container" id="about-api">
+        <!-- Contenu chargé depuis l'API apparaîtra ici -->
+      </div>
+    </section>
+
+    <!-- ====== MISSION ====== -->
+    <section class="section-mission">
+      <div class="container">
+
+        <div class="section-intro text-center mb-5">
+          <h2>Notre mission</h2>
+          <p>Trois engagements fondamentaux qui guident chacune de nos actions au quotidien.</p>
+        </div>
+
+        <div class="row g-4">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="mission-card">
+              <div class="mission-number">01 — Communautés</div>
+              <h3 class="mission-title">Solutions pour les communautés</h3>
+              <p class="mission-desc">Apporter des réponses concrètes aux besoins des populations grâce aux technologies et outils numériques accessibles à tous.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="mission-card">
+              <div class="mission-number">02 — Services</div>
+              <h3 class="mission-title">Services digitaux professionnels</h3>
+              <p class="mission-desc">Offrir des services de qualité : graphisme, montage vidéo, création de comptes monétisés et assistance technique clé en main.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6">
+            <div class="mission-card">
+              <div class="mission-number">03 — Formation</div>
+              <h3 class="mission-title">Former les talents de demain</h3>
+              <p class="mission-desc">Accompagner les jeunes dans le business, le marketing digital, l'IA et l'entrepreneuriat pour transformer leurs compétences en revenus.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== VALEURS ====== -->
+    <section class="section-values">
+      <div class="container">
+
+        <div class="section-intro text-center mb-5">
+          <h2>Nos valeurs</h2>
+          <p>Les principes qui nous définissent et guident nos décisions chaque jour.</p>
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-md-6 col-lg-3">
+            <div class="value-item">
+              <div class="value-icon"><i class="fa-solid fa-lightbulb"></i></div>
+              <div class="value-content">
+                <h4>Innovation</h4>
+                <p>Repousser les limites du possible grâce aux technologies émergentes.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="value-item">
+              <div class="value-icon"><i class="fa-solid fa-users"></i></div>
+              <div class="value-content">
+                <h4>Accessibilité</h4>
+                <p>Rendre le digital accessible à tous, partout, sans barrière de coût.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="value-item">
+              <div class="value-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div class="value-content">
+                <h4>Impact</h4>
+                <p>Chaque action produit un changement mesurable dans les communautés.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="value-item">
+              <div class="value-icon"><i class="fa-solid fa-star"></i></div>
+              <div class="value-content">
+                <h4>Excellence</h4>
+                <p>Des standards professionnels élevés à chaque formation et livraison.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ÉQUIPE ====== -->
+    <section class="team-section">
+        <div class="container">
+            
+            <div class="section-header">
+                <h2>L'équipe EDECIA</h2>
+                <p>Découvrez les talents et experts technologiques qui propulsent l’innovation au cœur de notre écosystème digital.</p>
+            </div>
+
+            <div class="team-grid">
+                {% for member in team_members %}
+                <div class="team-card">
+
+                    <div class="team-image">
+                        {% if member.photo %}
+                            <img src="{{ member.photo.url }}" alt="{{ member.name }}">
+                        {% else %}
+                            <img src="https://ui-avatars.com/api/?name={{ member.name|urlencode }}&background=00a8cc&color=fff&size=150" alt="{{ member.name }}">
+                        {% endif %}
+
+                        <div class="team-overlay">
+                            {% if member.whatsapp %}
+                                <a href="{{ member.whatsapp }}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if member.facebook %}
+                                <a href="{{ member.facebook }}" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            {% endif %}
+
+                            {% if member.email %}
+                                <a href="mailto:{{ member.email }}" aria-label="Email">
+                                    <i class="fa-solid fa-envelope"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <h3>{{ member.name }}</h3>
+                    <h4>{{ member.role }}</h4>
+                    <p>{{ member.bio }}</p>
+
+                </div>
+                {% empty %}
+                <div class="w-100 text-center py-4">
+                    <p style="color: var(--text-muted);">Aucun membre d'équipe disponible pour le moment.</p>
+                </div>
+                {% endfor %}
+            </div>
+
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-content">
+
+        <div class="footer-section footer-about">
+          <div class="footer-logo">
+             <a href="{% url 'index' %}" class="navbar-brand-custom">
+             <img src="{% static 'images/Picture/logo.png' %}" alt="EDECIA Logo" class="logo-img">
+             </a>
+            <span class="brand-name">EDECIA</span>
+          </div>
+          <p class="footer-description">EDECIA est un écosystème digital 100% conçu pour apporter des solutions concrètes aux besoins des communautés, offrir des services technologiques adaptés et propulser les talents d'avenir.</p>
+          <div class="social-links">
+            <a href="https://www.youtube.com/edecia" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/edecia" target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/company/edecia" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/edecia" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.whatsapp.com/company/edecia" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Services</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'service' %}">Accompagnement Technique</a></li>
+            <li><a href="{% url 'service' %}">Conseil aux Entreprises</a></li>
+            <li><a href="{% url 'service' %}">Développement Sur Mesure</a></li>
+            <li><a href="{% url 'service' %}">Solutions Digitales</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3 class="footer-title">Entreprise</h3>
+          <ul class="footer-links">
+            <li><a href="{% url 'index' %}#projets">Nos Projets</a></li>
+            <li><a href="{% url 'about' %}">À Propos</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
+            <li><a href="{% url 'contact' %}">Contact</a></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copyright">&copy; 2026 EDECIA. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/256702465646" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Nous contacter sur WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+<span class="wa-tooltip">Discutons sur WhatsApp</span>
+  </a>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
